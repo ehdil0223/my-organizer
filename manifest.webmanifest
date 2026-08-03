@@ -1,0 +1,10 @@
+{
+  "name": "나의 기록",
+  "short_name": "나의 기록",
+  "description": "개인 메모와 파일을 보관하는 앱",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fffdf8",
+  "theme_color": "#246b57",
+  "icons": [{ "src": "icons/icon-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any" }, { "src": "icons/icon-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any" }]
+}
