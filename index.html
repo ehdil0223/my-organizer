@@ -1,79 +1,33 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#246b57" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="나의 기록" />
-    <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="icons/icon-192.svg" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>나의 기록</title>
-  </head>
-  <body>
-    <main class="shell">
-      <header class="app-header">
-        <div>
-          <p class="eyebrow">개인 보관함</p>
-          <h1>나의 기록</h1>
-        </div>
-        <button id="account-button" class="account-button" type="button" hidden>계정</button>
-      </header>
-
-      <section id="auth-view" class="auth-card" aria-labelledby="auth-title">
-        <h2 id="auth-title">기록을 동기화하세요</h2>
-        <p>같은 계정으로 로그인하면 아이폰과 컴퓨터에서 동일한 기록을 볼 수 있어요.</p>
-        <label for="email-input">이메일</label>
-        <input id="email-input" type="email" autocomplete="email" placeholder="name@example.com" />
-        <label for="password-input">비밀번호</label>
-        <input id="password-input" type="password" autocomplete="current-password" placeholder="6자 이상" minlength="6" />
-        <div class="auth-actions"><button id="login-button" class="primary" type="button">로그인</button><button id="signup-button" class="secondary" type="button">계정 만들기</button></div>
-        <p id="auth-message" class="auth-message"></p>
-      </section>
-
-      <div id="app-view" hidden>
-      <section class="composer" aria-labelledby="new-note-title">
-        <h2 id="new-note-title">새 기록</h2>
-        <label for="note-title">제목 <span>(선택)</span></label>
-        <input id="note-title" type="text" placeholder="예: 이번 주 할 일" maxlength="80" />
-        <label for="note-content">내용</label>
-        <textarea id="note-content" rows="6" placeholder="무엇이든 편하게 적어 보세요."></textarea>
-        <div class="composer-bottom">
-          <label class="file-picker" for="file-input"><span>＋</span> 파일 첨부</label>
-          <input id="file-input" type="file" multiple hidden />
-          <button id="save-button" class="primary" type="button">기록 저장</button>
-        </div>
-        <div id="pending-files" class="pending-files" aria-live="polite"></div>
-      </section>
-
-      <section class="records" aria-labelledby="records-title">
-        <div class="section-head">
-          <h2 id="records-title">내 기록</h2>
-          <span id="record-count"></span>
-        </div>
-        <div id="empty-state" class="empty-state">아직 기록이 없어요.<br />첫 기록을 남겨 보세요.</div>
-        <div id="record-list" class="record-list"></div>
-      </section>
-      </div>
-    </main>
-
-    <template id="record-template">
-      <article class="record">
-        <div class="record-meta"></div>
-        <h3></h3>
-        <p class="record-content"></p>
-        <div class="attachments"></div>
-        <div class="record-actions">
-          <button class="edit" type="button">수정</button>
-          <button class="delete" type="button">삭제</button>
-        </div>
-      </article>
-    </template>
-    <div id="toast" role="status" aria-live="polite"></div>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="config.js"></script>
-    <script src="app.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#246b57" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="나의 기록" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>나의 기록</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="app-header"><div><p class="eyebrow">개인 보관함</p><h1>나의 기록</h1></div></header>
+    <section class="composer" aria-labelledby="new-note-title">
+      <h2 id="new-note-title">새 기록</h2>
+      <label for="note-title">제목 <span>(선택)</span></label>
+      <input id="note-title" type="text" placeholder="예: 이번 주 할 일" maxlength="80" />
+      <label for="note-content">내용</label>
+      <textarea id="note-content" rows="6" placeholder="무엇이든 편하게 적어 보세요."></textarea>
+      <div class="composer-bottom"><label class="file-picker" for="file-input"><span>＋</span> 파일 첨부</label><input id="file-input" type="file" multiple hidden /><button id="save-button" class="primary" type="button">기록 저장</button></div>
+      <div id="pending-files" class="pending-files" aria-live="polite"></div>
+    </section>
+    <section class="records" aria-labelledby="records-title"><div class="section-head"><h2 id="records-title">내 기록</h2><span id="record-count"></span></div><div id="empty-state" class="empty-state">아직 기록이 없어요.<br />첫 기록을 남겨 보세요.</div><div id="record-list" class="record-list"></div></section>
+  </main>
+  <template id="record-template"><article class="record"><div class="record-meta"></div><h3></h3><p class="record-content"></p><div class="attachments"></div><div class="record-actions"><button class="edit" type="button">수정</button><button class="delete" type="button">삭제</button></div></article></template>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="app.js"></script>
+</body>
 </html>
